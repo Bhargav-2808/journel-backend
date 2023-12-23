@@ -6,6 +6,56 @@ generator client {
 }
 
 datasource db {
-  provider = "postgresql"
-  url      = env("DATABASE_URL")
+  provider  = "postgresql"
+  url  	    = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
 }
+
+model User {
+  id           Int      @id @default(autoincrement())
+  email        String   @unique
+  created_at   DateTime @default(now())
+  updated_at   DateTime @updatedAt
+  first_name   String
+  last_name    String
+  mobile_number String   @unique
+  demateAccounts DemateAccount[] 
+  journalLogs JournalLogs[]
+}
+
+model DemateAccount {
+  id          Int      @id @default(autoincrement())
+  name        String
+  created_at  DateTime @default(now())
+  updated_at  DateTime @updatedAt
+  userId      Int?
+  user        User?    @relation(fields: [userId], references: [id]) // Define the forward relation
+}
+
+
+model JournalLogs {
+  id               Int      @id @default(autoincrement())
+  trading_method   String?
+  buy_time         DateTime?
+  sell_time        DateTime?
+  buy_price        Float
+  sell_price       Float
+  quantity         Int
+  trading_type     String
+  broker_name      String
+  additional_note  String?  @db.Text
+  trade_reason     String?
+  is_news_affected String
+  stop_loss        Float?
+  userId       Int?
+  user         User?    @relation(fields: [userId], references: [id]) // Define the forward relation
+  timestamp    DateTime @default(now())
+}
+
+
+
+
+
+
+
+

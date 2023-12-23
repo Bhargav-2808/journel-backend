@@ -4,7 +4,7 @@ import { config } from './config/config';
 
 export const app: Application = express();
 
-const port = config.app.port || 8080
+const port = config.app.port || 8080;
 
 const corsOptions = {
   // origin: [/\.?qualifarm\.com$/, /(localhost|127.0.0.1){1}(:?\d{2,4})?/],
