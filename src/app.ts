@@ -1,6 +1,7 @@
 import express, { Application } from 'express';
 import cors from 'cors';
 import { config } from './config/config';
+import { exceptionHandling } from './middleware/exceptionHadling';
 
 export const app: Application = express();
 
@@ -12,7 +13,8 @@ const corsOptions = {
 };
 app.use(cors(corsOptions));
 app.use(express.json({ limit: '50mb' }));
-
+app.use(exceptionHandling);
+ 
 app.listen(port, () => {
   console.log(`App is running on port ${port}`);
 });

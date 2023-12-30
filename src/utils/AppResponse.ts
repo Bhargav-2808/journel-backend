@@ -4,7 +4,7 @@ export type AppResponseObj = {
   data?: any;
 };
 
-export class AppError {
+export class AppResponse {
   status: number;
   messsage: string;
   data?: any;
@@ -15,19 +15,19 @@ export class AppError {
     this.data = data;
   }
 
-  static Created(msg: string): AppResponseObj {
-    return new AppError(201, msg, null);
+  static Created(msg: string, req, res, next): AppResponseObj {
+    return new AppResponse(201, msg, null);
   }
 
   static Updated(msg: string): AppResponseObj {
-    return new AppError(200, msg, null);
+    return new AppResponse(200, msg, null);
   }
 
   static Success(msg: string, data: unknown): AppResponseObj {
-    return new AppError(200, msg, data);
+    return new AppResponse(200, msg, data);
   }
 
   static Deleted(msg: string): AppResponseObj {
-    return new AppError(204, msg, null);
+    return new AppResponse(204, msg, null);
   }
 }
