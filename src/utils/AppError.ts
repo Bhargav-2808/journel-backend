@@ -1,22 +1,22 @@
 export type AppErrorObj = {
   status: number;
-  messsage: string;
+  message: string;
   error?: unknown;
 };
 
 export class AppError {
   status: number;
-  messsage: string;
+  message: string;
   error?: unknown;
 
   constructor(status: number, message: string, error: unknown) {
     this.status = status;
-    this.messsage = message;
+    this.message = message;
     this.error = error;
   }
 
-  static BadRequest(msg: string): AppErrorObj {
-    return new AppError(400, msg, null);
+  static BadRequest(msg: string, error: unknown): AppErrorObj {
+    return new AppError(400, msg, error);
   }
 
   static NotFound(msg: string): AppErrorObj {

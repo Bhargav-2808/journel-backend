@@ -1,6 +1,17 @@
 export type User = {
   id: number;
-  email: String;
-  first_name: String;
-  last_name: String;
+  email: string;
+  first_name: string;
+  last_name: string;
+  password?: string;
+  mobile_number: number;
+};
+
+export type UserInput = {
+  email: string;
+  first_name: string;
+  last_name: string;
+  password: string;
+  confirmPassword?: string;
+  mobile_number: number;
 };

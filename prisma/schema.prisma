@@ -18,7 +18,8 @@ model User {
   updated_at   DateTime @updatedAt
   first_name   String
   last_name    String
-  mobile_number String   @unique
+  mobile_number BigInt  @unique
+  password String 
   demateAccounts DemateAccount[] 
   journalLogs JournalLogs[]
 }
