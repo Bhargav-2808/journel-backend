@@ -6,9 +6,7 @@ import { generateHashPassword, generateJwtToken } from '../../src/utils/helper';
 import * as z from 'zod';
 import { UserInput } from '../../src/types/userTypes';
 
-
-
-export const userLogin = async (req: Request, res: Response) => {
+export const userLogin = async (req: Request, res: Response, next: NextFunction) => {
   try {
     const { email, password } = req.body;
     const user = await userService.getUserByEmail(email);
@@ -26,12 +24,12 @@ export const userLogin = async (req: Request, res: Response) => {
       token,
     });
   } catch (error) {
-    throw AppError.ServerError('Internel server Error', error.message);
+    next(error);
   }
 };
 
 export const userRegister = async (req: Request, res: Response, next: NextFunction) => {
-  const { body}  = req;
+  const { body } = req;
   const { first_name, last_name, mobile_number, email, password, confirmPassword } = body;
   try {
     const user = await userService.getUserByEmail(email);

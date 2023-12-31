@@ -1,12 +1,7 @@
 import { NextFunction, Request, Response } from 'express';
 import { AppError } from '../../src/utils/AppError';
 
-export const exceptionHandling = (
-  error: unknown,
-  req: Request,
-  res: Response,
-  next: NextFunction
-) => {
+export const exceptionHandling = (error: unknown, req: Request, res: Response, next: NextFunction) => {
   if (error instanceof AppError) {
     console.log('%cexceptionHadling.ts line:11 error', 'color: #007acc;', error);
     res.status(error.status).json({
@@ -23,6 +18,3 @@ export const exceptionHandling = (
     });
   }
 };
-
-
-

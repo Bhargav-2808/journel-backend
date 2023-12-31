@@ -20,5 +20,5 @@ export const config = {
     password: envVars.POSTGRES_PASSWORD,
     db: envVars.POSTGRES_DB,
   },
-  clientSecret : envVars.CLIENT_SECRET
+  clientSecret: envVars.CLIENT_SECRET,
 };

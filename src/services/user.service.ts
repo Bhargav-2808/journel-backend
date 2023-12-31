@@ -18,7 +18,7 @@ export const getUserByEmail = async (email: string): Promise<User> => {
     },
   });
 };
-export const createUser = async (payload:  UserInput): Promise<User> => {
+export const createUser = async (payload: UserInput): Promise<User> => {
   console.log('%cuser.service.ts line:22 payload', 'color: #007acc;', payload);
   return prisma.user.create({
     data: payload,
@@ -28,5 +28,5 @@ export const createUser = async (payload:  UserInput): Promise<User> => {
 export const userService = {
   getUserById,
   getUserByEmail,
-  createUser
+  createUser,
 };
